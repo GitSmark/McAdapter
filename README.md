@@ -1,4 +1,4 @@
-# McAdapter ![ Android Arsenal ](https://img.shields.io/badge/ Android%20Arsenal - McAdapter -brightgreen.svg?style=flat) [ ![Download](https://api.bintray.com/packages/huangxy/maven/mcadapter/images/download.svg) ](https://bintray.com/huangxy/maven/mcadapter/_latestVersion)
+# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [ ![Download](https://api.bintray.com/packages/huangxy/maven/mcadapter/images/download.svg) ](https://bintray.com/huangxy/maven/mcadapter/_latestVersion)
 A very simple multilayer package CommonAdapter. 
 
 ------
@@ -34,7 +34,7 @@ Usage
 
       @Override
       public void onItemAction(int position) {
-          //tv.setOnClickListener();
+          //tv.setOnClickListener(this);
       }
   }
  ```
