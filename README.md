@@ -1,4 +1,4 @@
-# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [ ![Download](https://api.bintray.com/packages/huangxy/maven/mcadapter/images/download.svg) ](https://bintray.com/huangxy/maven/mcadapter/_latestVersion)
+# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.2.0-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
 A very simple multilayer package CommonAdapter. 
 
 ------
@@ -8,12 +8,21 @@ A very simple multilayer package CommonAdapter.
 
 Usage
 -----
+  1. In project build.gradle
   ```
-  compile 'com.huangxy:mcadapter:1.1.0'
+  repositories {
+    maven {
+      url "https://jitpack.io"
+    }
+  }
+  ```
+  2. In app build.gradle
+  ```
+  implementation 'com.github.GitSmark:McAdapter:1.2.0'
   ```
 * Get your AdapterItem
  ```java
-  public class McAdapterItem implements AdapterItem<McEntity<String>> {
+  public class MyAdapterItem implements McAdapterItem<String> {
 
       private TextView tv;
 
@@ -28,8 +37,8 @@ Usage
       }
 
       @Override
-      public void onUpdateViews(McEntity<String> model, int position) {
-          tv.setText(model.getItemEntity());
+      public void onUpdateViews(String model) {
+          tv.setText(model);
       }
 
       @Override
@@ -48,19 +57,19 @@ Usage
   listview.setAdapter(new CommonAdapter(data) {
       @NonNull
       @Override
-      public AdapterItem onCreateItem(Object type) {
+      public IAdapterItem onCreateItem(Object type) {
           return new McAdapterItem2();
       }
   });
   
-  listview.setAdapter(new CommonAdapter<McEntity<String>>(list, 2) {
+  listview.setAdapter(new CommonAdapter<McEntity>(list, 2) {
       @Override
       public Object getItemType(McEntity obj) {
           return obj.getItemType();
       }
       @NonNull
       @Override
-      public AdapterItem onCreateItem(Object type) {
+      public IAdapterItem onCreateItem(Object type) {
           switch (((int) type)) {
               case 0:
                   return new McAdapterItem3();

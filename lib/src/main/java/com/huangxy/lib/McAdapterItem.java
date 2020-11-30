@@ -32,8 +32,8 @@ public abstract class McAdapterItem<T> implements IAdapterItem<McEntity<T>> {
         }
     }
 
-    //@Override
-    //public void onBindViews(View root) {}
+    @Override
+    public void onBindViews(View root) {}
 
     @Override
     public void onUpdateViews(McEntity<T> model, int position) {

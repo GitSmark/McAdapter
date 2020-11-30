@@ -32,8 +32,8 @@ public abstract class AdapterItem<T> implements IAdapterItem<T> {
         }
     }
 
-    //@Override
-    //public void onBindViews(View root) {}
+    @Override
+    public void onBindViews(View root) {}
 
     @Override
     public void onUpdateViews(T model, int position) {
