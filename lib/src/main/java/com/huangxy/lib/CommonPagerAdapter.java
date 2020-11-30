@@ -1,19 +1,18 @@
-package com.administrator.ticat.Common.CommonAdapter;
+package com.huangxy.lib;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
+import androidx.annotation.NonNull;
 
-import butterknife.ButterKnife;
+import java.util.List;
 
 /**
  * @author Jack Tony
  * @date 2015/11/29
  */
-public abstract class CommonPagerAdapter<T extends AdapterItem> extends BasePagerAdapter<View> implements IAdapter<T>{
+public abstract class CommonPagerAdapter<T extends IAdapterItem> extends BasePagerAdapter<View> implements IAdapter<T>{
 
     private List<T> mData;
 
@@ -47,7 +46,7 @@ public abstract class CommonPagerAdapter<T extends AdapterItem> extends BasePage
     public void setPrimaryItem(ViewGroup container, int position, @NonNull Object object) {
         // 这里应该放置数据更新的操作
         if (object != currentItem) {
-            AdapterItem<T> item = ((AdapterItem<T>) ((View) object).getTag());
+            IAdapterItem<T> item = ((IAdapterItem<T>) ((View) object).getTag());
             item.onUpdateViews(mData.get(position), position);
             item.onItemAction(position);
         }
@@ -59,10 +58,10 @@ public abstract class CommonPagerAdapter<T extends AdapterItem> extends BasePage
         if (mInflater == null) {
             mInflater = LayoutInflater.from(container.getContext());
         }
-        AdapterItem<T> item = onCreateItem(getItemType(position));
+        IAdapterItem<T> item = onCreateItem(getItemType(position));
         View view = mInflater.inflate(item.getLayoutResId(), null);
         view.setTag(item); // 万一你要用到这个item可以通过这个tag拿到
-        ButterKnife.bind(item, view);// 绑定ButterKnife
+        //ButterKnife.bind(item, view);// 绑定ButterKnife
         item.onBindViews(view);
         //item.onSetViews();
         return view;

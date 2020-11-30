@@ -1,10 +1,10 @@
-package com.administrator.ticat.Common.CommonAdapter;
+package com.huangxy.lib;
 
-import android.support.v4.util.ArrayMap;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.util.ArrayMap;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.LinkedList;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Queue;
  * 如果调用{@link #notifyDataSetChanged()}来更新，
  * 它会自动调用{@link #instantiateItem(ViewGroup, int)}重新new出需要的item，算是完全初始化一次。
  */
-abstract class BasePagerAdapter<T> extends PagerAdapter {
+public abstract class BasePagerAdapter<T> extends PagerAdapter {
 
     public static final String TAG = "BasePagerAdapter";
 
@@ -55,8 +55,8 @@ abstract class BasePagerAdapter<T> extends PagerAdapter {
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);
-        if (object != currentItem) { 
-        // 可能是currentItem不等于null，可能是二者不同
+        if (object != currentItem) {
+            // 可能是currentItem不等于null，可能是二者不同
             currentItem = (T) object;
         }
     }
@@ -119,9 +119,6 @@ abstract class BasePagerAdapter<T> extends PagerAdapter {
      */
     protected abstract T onCreateItem(ViewGroup container, int position);
 
-
-
-
     ///////////////////////////////////////////////////////////////////////////
     // 缓存类
     ///////////////////////////////////////////////////////////////////////////
@@ -152,6 +149,5 @@ abstract class BasePagerAdapter<T> extends PagerAdapter {
             queue.offer(item);
         }
     }
-
-
 }
+

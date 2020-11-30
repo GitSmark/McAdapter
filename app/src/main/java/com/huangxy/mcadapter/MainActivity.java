@@ -2,8 +2,9 @@ package com.huangxy.mcadapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by huangxy on 2016/10/29.

@@ -3,14 +3,13 @@ package com.huangxy.mcadapter;
 import android.view.View;
 import android.widget.TextView;
 
-import huangxy.com.mcadapter.AdapterItem;
-import huangxy.com.mcadapter.McEntity;
+import com.huangxy.lib.McAdapterItem;
 
 /**
  * Created by huangxy on 2016/10/29.
  * https://github.com/GitSmark/McAdapter
  */
-public class McAdapterItem3 implements AdapterItem<McEntity<String>> {
+public class McAdapterItem3 extends McAdapterItem<String> {
 
     private TextView tv;
 
@@ -25,12 +24,7 @@ public class McAdapterItem3 implements AdapterItem<McEntity<String>> {
     }
 
     @Override
-    public void onUpdateViews(McEntity<String> model, int position) {
-        tv.setText(model.getItemEntity());
-    }
-
-    @Override
-    public void onItemAction(int position) {
-        tv.setOnClickListener();
+    public void onUpdateViews(String model) {
+        tv.setText(model);
     }
 }

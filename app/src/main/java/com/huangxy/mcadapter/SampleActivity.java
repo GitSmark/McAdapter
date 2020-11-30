@@ -1,63 +1,71 @@
 package com.huangxy.mcadapter;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.huangxy.lib.CommonAdapter;
+import com.huangxy.lib.IAdapterItem;
+import com.huangxy.lib.McAdapter;
+import com.huangxy.lib.McAdapterUtil;
+import com.huangxy.lib.McEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import huangxy.com.mcadapter.AdapterItem;
-import huangxy.com.mcadapter.CommonAdapter;
-import huangxy.com.mcadapter.McAdapter;
-import huangxy.com.mcadapter.McEntity;
 
 /**
  * Created by huangxy on 2016/10/29.
  * https://github.com/GitSmark/McAdapter
  */
-public class SampleActivity extends AppCompatActivity {
+public class SampleActivity extends AppCompatActivity { //implements IAdapterView.OnClickListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
-        ListView lv = (ListView) findViewById(R.id.sample_listview);
+        ListView lv = findViewById(R.id.sample_listview);
 
         List<String> data = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 1; i < 16; i++) {
             data.add("Test"+i);
         }
 
-        List<McEntity<String>> list = new ArrayList<>();
+        List<McEntity> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
+            //支持泛型，itemEntity支持多布局对应多model
             list.add(new McEntity(i%2, "Test"+i));
         }
+
+        //List<McEntity> list = McAdapterUtil.toMcEntity(data);
+        //List<McEntity> list = McAdapterUtil.toMcEntity(data, 1);
 
         switch (getIntent().getIntExtra("sampleNum", 0)){
             case 1:
                 lv.setAdapter(new McAdapter(data, McAdapterItem1.class));
+                //lv.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听
                 break;
             case 2:
                 lv.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class));
                 break;
             case 3:
                 lv.setAdapter(new CommonAdapter(data) {
-                    @NonNull@Override
-                    public AdapterItem onCreateItem(Object type) {
+                    @NonNull
+                    @Override
+                    public IAdapterItem onCreateItem(Object type) {
                         return new McAdapterItem2();
                     }
                 });
                 break;
             case 4:
-                lv.setAdapter(new CommonAdapter<McEntity<String>>(list, 2) {
+                lv.setAdapter(new CommonAdapter<McEntity>(list, 2) {
                     @Override
                     public Object getItemType(McEntity obj) {
                         return obj.getItemType();
                     }
                     @NonNull@Override
-                    public AdapterItem onCreateItem(Object type) {
+                    public IAdapterItem onCreateItem(Object type) {
                         switch (((int) type)) {
                             case 0:
                                 return new McAdapterItem3();
@@ -72,7 +80,5 @@ public class SampleActivity extends AppCompatActivity {
             default:
                 break;
         }
-
     }
-
 }

@@ -1,4 +1,4 @@
-﻿package huangxy.com.mcadapter;
+package com.huangxy.lib;
 
 /**
  * Created by huangxy on 2016/10/28.

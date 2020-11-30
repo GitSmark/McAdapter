@@ -1,14 +1,13 @@
-package com.administrator.ticat.Common.CommonAdapter;
+package com.huangxy.lib;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import java.util.List;
+import androidx.annotation.NonNull;
 
-import butterknife.ButterKnife;
+import java.util.List;
 
 /**
  * @author Jack Tony
@@ -17,7 +16,7 @@ import butterknife.ButterKnife;
 public abstract class CommonAdapter<T> extends BaseAdapter implements IAdapter<T> {
 
     private final boolean DEBUG = false;
-    
+
     private List<T> mDataList;
 
     private int mViewTypeCount;
@@ -82,7 +81,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter implements IAdapter<T
     public Object getItemType(T t) {
         return -1; // default
     }
-    
+
     @Override
     public int getViewTypeCount() {
         return mViewTypeCount;
@@ -93,18 +92,18 @@ public abstract class CommonAdapter<T> extends BaseAdapter implements IAdapter<T
         if (mInflater == null) {
             mInflater = LayoutInflater.from(parent.getContext());
         }
-        
-        AdapterItem<T> item;
+
+        IAdapterItem<T> item;
         if (convertView == null) {
             item = onCreateItem(mType);
             convertView = mInflater.inflate(item.getLayoutResId(), parent, false);
             convertView.setTag(item);
-            ButterKnife.bind(item, convertView);// 绑定ButterKnife
+            //ButterKnife.bind(item, convertView);// 绑定ButterKnife
             item.onBindViews(convertView);
             //item.onSetViews();
             if (DEBUG) convertView.setBackgroundColor(0xffff0000);
         } else {
-            item = (AdapterItem<T>) convertView.getTag();
+            item = (IAdapterItem<T>) convertView.getTag();
             if (DEBUG) convertView.setBackgroundColor(0xff00ff00);
         }
         item.onUpdateViews(mDataList.get(position), position);

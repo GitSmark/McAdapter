@@ -1,14 +1,13 @@
-package com.administrator.ticat.Common.CommonAdapter;
+package com.huangxy.lib;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-import butterknife.ButterKnife;
+import java.util.List;
 
 /**
  * @author Jack Tony
@@ -17,7 +16,7 @@ import butterknife.ButterKnife;
 public abstract class CommonRcvAdapter<T> extends RecyclerView.Adapter implements IAdapter<T>{
 
     private final boolean DEBUG = false;
-    
+
     private List<T> mDataList;
 
     private Object mItemType;
@@ -37,7 +36,7 @@ public abstract class CommonRcvAdapter<T> extends RecyclerView.Adapter implement
     public T getItem(int position) {
         return mDataList.get(position);
     }
-    
+
     @Override
     public void setData(@NonNull List<T> data) {
         mDataList = data;
@@ -83,34 +82,34 @@ public abstract class CommonRcvAdapter<T> extends RecyclerView.Adapter implement
             item.isNew = false;
         }
         //((RcvAdapterItem) holder).getItem().onUpdateViews(mDataList.get(position), position);
-        AdapterItem<T> mItem = ((RcvAdapterItem) holder).getItem();
+        IAdapterItem<T> mItem = ((RcvAdapterItem) holder).getItem();
         mItem.onUpdateViews(mDataList.get(position), position);
         mItem.onItemAction(position);
     }
 
-    
+
     ///////////////////////////////////////////////////////////////////////////
     // 内部用到的viewhold
     ///////////////////////////////////////////////////////////////////////////
-    
+
     private class RcvAdapterItem extends RecyclerView.ViewHolder {
 
-        private AdapterItem<T> mItem;
-        
+        private IAdapterItem<T> mItem;
+
         public boolean isNew = true; // debug中才用到
-        
-        protected RcvAdapterItem(Context context, ViewGroup parent, AdapterItem<T> item) {
+
+        protected RcvAdapterItem(Context context, ViewGroup parent, IAdapterItem<T> item) {
             super(LayoutInflater.from(context).inflate(item.getLayoutResId(), parent, false));
             mItem = item;
-            ButterKnife.bind(item, itemView);// 绑定ButterKnife
+            //ButterKnife.bind(item, itemView);// 绑定ButterKnife
             mItem.onBindViews(itemView);
             //mItem.onSetViews();
         }
 
-        protected AdapterItem<T> getItem() {
+        protected IAdapterItem<T> getItem() {
             return mItem;
         }
-        
+
     }
-    
+
 }
