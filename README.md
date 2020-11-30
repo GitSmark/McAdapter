@@ -22,7 +22,7 @@ Usage
   ```
 * Get your AdapterItem
  ```java
-  public class MyAdapterItem implements McAdapterItem<String> {
+  public class MyAdapterItem extends McAdapterItem<String> {
 
       private TextView tv;
 
