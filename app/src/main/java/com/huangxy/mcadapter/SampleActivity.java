@@ -6,12 +6,6 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.huangxy.lib.CommonAdapter;
-import com.huangxy.lib.IAdapterItem;
-import com.huangxy.lib.McAdapter;
-import com.huangxy.lib.McAdapterUtil;
-import com.huangxy.lib.McEntity;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.huangxy.lib;
+package com.huangxy.mcadapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 /**
  * @author Jack Tony
@@ -63,7 +61,7 @@ public abstract class CommonPagerAdapter<T extends IAdapterItem> extends BasePag
         IAdapterItem<T> item = onCreateItem(getItemType(position));
         View view = mInflater.inflate(item.getLayoutResId(), null);
         view.setTag(item); // 万一你要用到这个item可以通过这个tag拿到
-        ButterKnife.bind(item, view);// 绑定ButterKnife
+        //ButterKnife.bind(item, view);// 绑定ButterKnife
         item.onBindViews(view);
         //item.onSetViews();
         return view;

@@ -1,4 +1,4 @@
-package com.huangxy.lib;
+package com.huangxy.mcadapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import androidx.annotation.NonNull;
 
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 /**
  * @author Jack Tony
@@ -100,7 +98,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter implements IAdapter<T
             item = onCreateItem(mType);
             convertView = mInflater.inflate(item.getLayoutResId(), parent, false);
             convertView.setTag(item);
-            ButterKnife.bind(item, convertView);// 绑定ButterKnife
+            //ButterKnife.bind(item, convertView);// 绑定ButterKnife
             item.onBindViews(convertView);
             //item.onSetViews();
             if (DEBUG) convertView.setBackgroundColor(0xffff0000);

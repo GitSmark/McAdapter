@@ -1,21 +1,21 @@
-package com.huangxy.lib;
+package com.huangxy.mcadapter;
 
 import android.view.View;
 
 /**
  * Created by huangxy on 2016/10/28.
  * https://github.com/GitSmark/McAdapter
- * McAdapterItem对应AdapterItem，配合McEntity多布局使用，推荐优先使用
+ * 实现IAdapterItem接口可自定义ViewHolder，推荐优先使用McAdapterItem
  */
-public abstract class McAdapterItem<T> implements IAdapterItem<McEntity<T>> {
+public abstract class AdapterItem<T> implements IAdapterItem<T> {
 
     private T model;
     protected IAdapterView.OnClickListener clickListener;
     protected IAdapterView.OnLongClickListener longClickListener;
 
-    public McAdapterItem(){}
+    public AdapterItem(){}
 
-    public McAdapterItem(Object obj) {
+    public AdapterItem(Object obj) {
         obtainListener(obj);
     }
 
@@ -32,13 +32,13 @@ public abstract class McAdapterItem<T> implements IAdapterItem<McEntity<T>> {
         }
     }
 
-    @Override
-    public void onBindViews(View root) {}
+    //@Override
+    //public void onBindViews(View root) {}
 
     @Override
-    public void onUpdateViews(McEntity<T> model, int position) {
-        if(model != null) this.model = model.getItemEntity();
-        onUpdateViews(model.getItemEntity());
+    public void onUpdateViews(T model, int position) {
+        this.model = model;
+        onUpdateViews(model);
     }
 
     public abstract void onUpdateViews(T model);

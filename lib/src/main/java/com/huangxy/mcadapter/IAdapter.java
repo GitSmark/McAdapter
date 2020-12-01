@@ -1,4 +1,4 @@
-package com.huangxy.lib;
+package com.huangxy.mcadapter;
 
 import androidx.annotation.NonNull;
 

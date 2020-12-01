@@ -1,4 +1,4 @@
-package com.huangxy.lib;
+package com.huangxy.mcadapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

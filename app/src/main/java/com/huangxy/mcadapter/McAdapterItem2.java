@@ -3,8 +3,6 @@ package com.huangxy.mcadapter;
 import android.view.View;
 import android.widget.TextView;
 
-import com.huangxy.lib.AdapterItem;
-
 /**
  * Created by huangxy on 2016/10/29.
  * https://github.com/GitSmark/McAdapter
