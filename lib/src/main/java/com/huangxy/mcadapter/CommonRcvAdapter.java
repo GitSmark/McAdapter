@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 /**
  * @author Jack Tony
  * @date 2015/5/17
@@ -101,7 +103,7 @@ public abstract class CommonRcvAdapter<T> extends RecyclerView.Adapter implement
         protected RcvAdapterItem(Context context, ViewGroup parent, IAdapterItem<T> item) {
             super(LayoutInflater.from(context).inflate(item.getLayoutResId(), parent, false));
             mItem = item;
-            //ButterKnife.bind(item, itemView);// 绑定ButterKnife
+            ButterKnife.bind(item, itemView);// 绑定ButterKnife
             mItem.onBindViews(itemView);
             //mItem.onSetViews();
         }
