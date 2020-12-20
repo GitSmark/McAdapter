@@ -86,7 +86,6 @@ public abstract class CommonRcvAdapter<T> extends RecyclerView.Adapter implement
         //((RcvAdapterItem) holder).getItem().onUpdateViews(mDataList.get(position), position);
         IAdapterItem<T> mItem = ((RcvAdapterItem) holder).getItem();
         mItem.onUpdateViews(mDataList.get(position), position);
-        mItem.onItemAction(position);
     }
 
 
@@ -105,7 +104,7 @@ public abstract class CommonRcvAdapter<T> extends RecyclerView.Adapter implement
             mItem = item;
             ButterKnife.bind(item, itemView);// 绑定ButterKnife
             mItem.onBindViews(itemView);
-            //mItem.onSetViews();
+            mItem.onSetViews();
         }
 
         protected IAdapterItem<T> getItem() {

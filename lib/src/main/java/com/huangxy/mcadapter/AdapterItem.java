@@ -9,47 +9,68 @@ import android.view.View;
  */
 public abstract class AdapterItem<T> implements IAdapterItem<T> {
 
-    private T model;
-    protected IAdapterView.OnClickListener clickListener;
-    protected IAdapterView.OnLongClickListener longClickListener;
+    private T model = null;
+    private int position = -1;
+    protected View rootView = null;
+    protected IAdapterView.OnClickListener mClickListener;
+    protected IAdapterView.OnItemClickListener mItemClickListener;
 
     public AdapterItem(){}
 
     public AdapterItem(Object obj) {
-        obtainListener(obj);
+        registerListener(obj);
     }
 
-    private void obtainListener(Object obj){
+    protected void registerListener(Object obj){
         try {
-            clickListener = (IAdapterView.OnClickListener) obj;
+            mClickListener = (IAdapterView.OnClickListener) obj;
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            longClickListener = (IAdapterView.OnLongClickListener) obj;
+            mItemClickListener = (IAdapterView.OnItemClickListener) obj;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void onBindViews(View root) {}
+    public void onBindViews(View root) {
+        rootView = root;
+    }
 
     @Override
     public void onUpdateViews(T model, int position) {
         this.model = model;
+        this.position = position;
         onUpdateViews(model);
     }
 
     public abstract void onUpdateViews(T model);
 
     @Override
-    public void onItemAction(int position) {
-
+    public void onSetViews() {
+        if (rootView != null && mItemClickListener != null) {
+            rootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mItemClickListener != null) {
+                        mItemClickListener.onItemClick(AdapterItem.this, rootView, getBindPosition(), getBindModel());
+                    }
+                }
+            });
+        }
+        onItemAction();
     }
+
+    public void onItemAction(){}
 
     public T getBindModel(){
         return model;
+    }
+
+    public int getBindPosition(){
+        return position;
     }
 
 }

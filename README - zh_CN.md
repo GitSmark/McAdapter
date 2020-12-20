@@ -1,14 +1,24 @@
 # McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.2.4-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
-A very simple multilayer package CommonAdapter.      [[中文文档]](https://github.com/GitSmark/McAdapter/blob/master/README - zh_CN.md) 
+一句话实现通用Adapter，支持ListView跟recyclerView的无缝切换
 
 ------
 |      [ListView+GridView]       |          [RecyclerView]          |           [ViewPager]          |
 | :----------------------------: | :------------------------------: |  :---------------------------: |
 |   `McAdapter`(CommonAdapter)   | `McRcvAdapter`(CommonRcvAdapter) |        CommonPagerAdapter      |
 
+
+- [x] 支持多布局对应多种model
+- [x] item会根据内部type来做自动复用
+- [x] 完美实现可拔插通用Adapter，支持item多处复用
+- [x] 一个item仅会触发一次onBindViews()绑定视图，提升效率
+- [x] 一个item仅会调用一次onItemAction()，避免重复建立listener
+- [x] 提供了getBindPosition()方法获取item对应的位置
+- [x] 提供了getBindModel()方法获取item绑定的数据
+- [x] 支持ButterKnife注入
+
 Usage
 -----
-  1. In project build.gradle
+  1. 在项目工程project下的build.gradle文件添加：
   ```
   repositories {
     maven {
@@ -16,11 +26,11 @@ Usage
     }
   }
   ```
-  2. In app build.gradle
+  2. 在项目工程app下的build.gradle文件添加：
   ```
   implementation 'com.github.GitSmark:McAdapter:1.2.4'
   ```
-* Get your AdapterItem
+* 实现你的AdapterItem，建议使用McAdapterItem，如果只有一个布局也可直接继承自IAdapterItem
  ```java
   public class MyAdapterItem extends McAdapterItem<String> {
 
@@ -47,10 +57,10 @@ Usage
       }
   }
  ```
-* Set your Adapter
+* 设置Adapter，McAdapterItem需配合McEntity多布局使用，支持添加监听事件，更多用法详见示例
  ```java
  
-  listview.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听 
+  listview.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听
   
   listview.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class));
   

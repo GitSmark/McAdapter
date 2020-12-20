@@ -102,14 +102,13 @@ public abstract class CommonAdapter<T> extends BaseAdapter implements IAdapter<T
             convertView.setTag(item);
             ButterKnife.bind(item, convertView);// 绑定ButterKnife
             item.onBindViews(convertView);
-            //item.onSetViews();
+            item.onSetViews();
             if (DEBUG) convertView.setBackgroundColor(0xffff0000);
         } else {
             item = (IAdapterItem<T>) convertView.getTag();
             if (DEBUG) convertView.setBackgroundColor(0xff00ff00);
         }
         item.onUpdateViews(mDataList.get(position), position);
-        item.onItemAction(position);
         return convertView;
     }
 

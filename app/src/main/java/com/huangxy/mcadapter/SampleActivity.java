@@ -1,6 +1,8 @@
 package com.huangxy.mcadapter;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +15,7 @@ import java.util.List;
  * Created by huangxy on 2016/10/29.
  * https://github.com/GitSmark/McAdapter
  */
-public class SampleActivity extends AppCompatActivity { //implements IAdapterView.OnClickListener
+public class SampleActivity extends AppCompatActivity implements IAdapterView.OnClickListener, IAdapterView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,11 @@ public class SampleActivity extends AppCompatActivity { //implements IAdapterVie
 
         switch (getIntent().getIntExtra("sampleNum", 0)){
             case 1:
-                lv.setAdapter(new McAdapter(data, McAdapterItem1.class));
-                //lv.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听
+                //lv.setAdapter(new McAdapter(data, McAdapterItem1.class));
+                lv.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听
                 break;
             case 2:
-                lv.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class));
+                lv.setAdapter(new McAdapter(this, list, McAdapterItem3.class, McAdapterItem4.class)); //添加监听
                 break;
             case 3:
                 lv.setAdapter(new CommonAdapter(data) {
@@ -73,6 +75,18 @@ public class SampleActivity extends AppCompatActivity { //implements IAdapterVie
                 break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        Log.e("McAdapter", "onClick - " +position);
+    }
+
+    @Override
+    public void onItemClick(IAdapterItem parent, View view, int position, Object item) {
+        if(parent.getClass() == McAdapterItem1.class || parent.getClass() == McAdapterItem3.class) {
+            Log.e("McAdapter", "onItemClick - " +position);
         }
     }
 }

@@ -25,21 +25,14 @@ public interface IAdapterItem<T> {
     void onBindViews(final View root);
 
     /**
-     * 设置view的参数
+     * 设置view的参数，可以在这里设置事件监听，只执行一次
+     * 调用getBindModel()、getBindPosition()可获取Item对应数据及位置下标
      */
-    //onItemAction(position)来替代onSetViews()
-    //void onSetViews();
+    void onSetViews();
 
     /**
      * 根据数据来设置item的内部views
      * @param model    数据list内部的model
      */
     void onUpdateViews(T model, int position);
-
-    /**
-     * 根据数据来设置item的监听回调
-     * @param position 当前adapter调用item的位置
-     */
-    void onItemAction(int position);
-
 }

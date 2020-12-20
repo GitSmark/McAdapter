@@ -50,7 +50,6 @@ public abstract class CommonPagerAdapter<T extends IAdapterItem> extends BasePag
         if (object != currentItem) {
             IAdapterItem<T> item = ((IAdapterItem<T>) ((View) object).getTag());
             item.onUpdateViews(mData.get(position), position);
-            item.onItemAction(position);
         }
         super.setPrimaryItem(container, position, object);
     }
@@ -65,7 +64,7 @@ public abstract class CommonPagerAdapter<T extends IAdapterItem> extends BasePag
         view.setTag(item); // 万一你要用到这个item可以通过这个tag拿到
         ButterKnife.bind(item, view);// 绑定ButterKnife
         item.onBindViews(view);
-        //item.onSetViews();
+        item.onSetViews();
         return view;
     }
 

@@ -10,6 +10,20 @@ import android.widget.TextView;
 public class McAdapterItem4 extends McAdapterItem<String> {
 
     private TextView tv;
+    private IAdapterView.OnLongClickListener mListener;
+
+    public McAdapterItem4(){}
+
+    public McAdapterItem4(Object obj){
+        //super(obj);
+
+        //注册你自己的监听事件
+        try {
+            mListener = (IAdapterView.OnLongClickListener) obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public int getLayoutResId() {
@@ -18,7 +32,8 @@ public class McAdapterItem4 extends McAdapterItem<String> {
 
     @Override
     public void onBindViews(View root) {
-        tv = (TextView) root.findViewById(R.id.item2);
+        super.onBindViews(root); //建议直接使用butterknife.BindView
+        tv = root.findViewById(R.id.item2);
     }
 
     @Override
@@ -27,7 +42,7 @@ public class McAdapterItem4 extends McAdapterItem<String> {
     }
 
     @Override
-    public void onItemAction(int position) {
-
+    public void onItemAction() {
+        //if (mListener != null) mListener.onLongClick(view, getBindPosition());
     }
 }

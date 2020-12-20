@@ -1,7 +1,8 @@
 package com.huangxy.mcadapter;
 
-import android.view.View;
 import android.widget.TextView;
+
+import butterknife.BindView;
 
 /**
  * Created by huangxy on 2016/10/29.
@@ -9,16 +10,12 @@ import android.widget.TextView;
  */
 public class McAdapterItem2 extends AdapterItem<String> {
 
-    private TextView tv;
+    @BindView(R.id.item2)
+    TextView tv;
 
     @Override
     public int getLayoutResId() {
         return R.layout.layout_item2;
-    }
-
-    @Override
-    public void onBindViews(View root) {
-        tv = (TextView) root.findViewById(R.id.item2);
     }
 
     @Override
