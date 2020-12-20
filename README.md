@@ -1,5 +1,5 @@
 # McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.2.4-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
-A very simple multilayer package CommonAdapter.      [[中文文档]](https://github.com/GitSmark/McAdapter/blob/master/README - zh_CN.md) 
+A very simple multilayer package CommonAdapter.      [[中文文档]](https://github.com/GitSmark/McAdapter/blob/master/README&#32;-&#32;zh_CN.md) 
 
 ------
 |      [ListView+GridView]       |          [RecyclerView]          |           [ViewPager]          |
