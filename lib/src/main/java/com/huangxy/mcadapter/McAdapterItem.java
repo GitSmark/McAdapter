@@ -7,7 +7,7 @@ import android.view.View;
  * https://github.com/GitSmark/McAdapter
  * McAdapterItem对应AdapterItem，配合McEntity多布局使用，推荐优先使用
  */
-public abstract class McAdapterItem<T> implements IAdapterItem<McEntity<T>> {
+public abstract class McAdapterItem<T> implements IAdapterItem<IAdapterModel> {
 
     private T model = null;
     private int position = -1;
@@ -40,10 +40,10 @@ public abstract class McAdapterItem<T> implements IAdapterItem<McEntity<T>> {
     }
 
     @Override
-    public void onUpdateViews(McEntity<T> model, int position) {
-        this.model = (model != null)? model.getItemEntity(): null;
+    public void onUpdateViews(IAdapterModel model, int position) {
+        this.model = (model != null)? (T) model.getItemEntity(): null;
         this.position = position;
-        onUpdateViews(model.getItemEntity());
+        onUpdateViews((T) model.getItemEntity());
     }
 
     public abstract void onUpdateViews(T model);
@@ -72,5 +72,4 @@ public abstract class McAdapterItem<T> implements IAdapterItem<McEntity<T>> {
     public int getBindPosition(){
         return position;
     }
-
 }

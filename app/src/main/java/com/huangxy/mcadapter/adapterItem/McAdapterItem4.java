@@ -1,7 +1,11 @@
-package com.huangxy.mcadapter;
+package com.huangxy.mcadapter.adapterItem;
 
 import android.view.View;
 import android.widget.TextView;
+
+import com.huangxy.mcadapter.IAdapterView;
+import com.huangxy.mcadapter.McAdapterItem;
+import com.huangxy.mcadapter.R;
 
 /**
  * Created by huangxy on 2016/10/29.
@@ -33,7 +37,7 @@ public class McAdapterItem4 extends McAdapterItem<String> {
     @Override
     public void onBindViews(View root) {
         super.onBindViews(root); //建议直接使用butterknife.BindView
-        tv = root.findViewById(R.id.item2);
+        tv = root.findViewById(R.id.tv_item2);
     }
 
     @Override

@@ -72,5 +72,4 @@ public abstract class AdapterItem<T> implements IAdapterItem<T> {
     public int getBindPosition(){
         return position;
     }
-
 }

@@ -1,7 +1,10 @@
-package com.huangxy.mcadapter;
+package com.huangxy.mcadapter.adapterItem;
 
 import android.view.View;
 import android.widget.TextView;
+
+import com.huangxy.mcadapter.AdapterItem;
+import com.huangxy.mcadapter.R;
 
 import butterknife.BindView;
 
@@ -11,7 +14,7 @@ import butterknife.BindView;
  */
 public class McAdapterItem1 extends AdapterItem<String> {
 
-    @BindView(R.id.item1)
+    @BindView(R.id.tv_item1)
     TextView tv;
 
     public McAdapterItem1(){}

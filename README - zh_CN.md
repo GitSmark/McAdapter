@@ -1,4 +1,4 @@
-# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.2.4-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
+# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.3.0-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
 一句话实现通用Adapter，支持ListView跟recyclerView的无缝切换
 
 ------
@@ -28,7 +28,7 @@ Usage
   ```
   2. 在项目工程app下的build.gradle文件添加：
   ```
-  implementation 'com.github.GitSmark:McAdapter:1.2.4'
+  implementation 'com.github.GitSmark:McAdapter:1.3.0'
   ```
 * 实现你的AdapterItem，建议使用McAdapterItem，如果只有一个布局也可直接继承自IAdapterItem
  ```java
@@ -57,12 +57,12 @@ Usage
       }
   }
  ```
-* 设置Adapter，McAdapterItem需配合McEntity多布局使用，支持添加监听事件，更多用法详见示例
+* 设置Adapter，McAdapterItem推荐配合McEntity多布局使用，支持添加监听事件，更多用法详见示例
  ```java
  
   listview.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听
   
-  listview.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class));
+  listview.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class)); //多布局
   
   listview.setAdapter(new CommonAdapter(data) {
       @NonNull

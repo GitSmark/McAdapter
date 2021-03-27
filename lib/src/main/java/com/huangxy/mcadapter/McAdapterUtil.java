@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Created by huangxy on 2016/10/28.
  * https://github.com/GitSmark/McAdapter
+ * McAdapterUtil工具类，将model转换为McEntity
  */
 public class McAdapterUtil {
 
@@ -19,12 +20,24 @@ public class McAdapterUtil {
         return toMcEntity(list, 0);
     }
 
+    @Deprecated
     public static List<McEntity> toMcEntity(List data, int itemType){
         List<McEntity> list = new ArrayList<>();
         if(data != null && data.size() > 0) {
             Iterator it = data.iterator();
             while (it.hasNext()) {
-                list.add(new McEntity(itemType, it.next()));
+                list.add(new McEntity(it.next(), itemType));
+            }
+        }
+        return list;
+    }
+
+    public static List<McEntity> toMcEntity(List data, Class<? extends IAdapterItem> adapterItem){
+        List<McEntity> list = new ArrayList<>();
+        if(data != null && data.size() > 0) {
+            Iterator it = data.iterator();
+            while (it.hasNext()) {
+                list.add(new McEntity(it.next(), adapterItem));
             }
         }
         return list;

@@ -1,7 +1,10 @@
-package com.huangxy.mcadapter;
+package com.huangxy.mcadapter.adapterItem;
 
 import android.view.View;
 import android.widget.TextView;
+
+import com.huangxy.mcadapter.McAdapterItem;
+import com.huangxy.mcadapter.R;
 
 /**
  * Created by huangxy on 2016/10/29.
@@ -14,7 +17,7 @@ public class McAdapterItem3 extends McAdapterItem<String> {
     public McAdapterItem3(){}
 
     public McAdapterItem3(Object obj){
-        registerListener(obj); //注册监听事件
+        registerListener(obj); //注册监听事件，仅使用McAdapter/McRcvAdapter生效
     }
 
     @Override
@@ -25,7 +28,7 @@ public class McAdapterItem3 extends McAdapterItem<String> {
     @Override
     public void onBindViews(View root) {
         super.onBindViews(root); //重写该方法别忘记赋值
-        tv = root.findViewById(R.id.item1);
+        tv = root.findViewById(R.id.tv_item1);
     }
 
     @Override

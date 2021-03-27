@@ -15,6 +15,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SampleActivity"></activity>
+        <activity android:name=".MultiActivity"></activity>
     </application>
 
 </manifest>

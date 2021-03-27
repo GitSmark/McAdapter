@@ -1,4 +1,4 @@
-# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.2.4-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
+# McAdapter ![Android Arsenal](https://img.shields.io/badge/Android%20%20%20%20%20Arsenal-%20McAdapter%20-brightgreen.svg?style=flat) [![](https://img.shields.io/badge/JitPack-1.3.0-blue.svg)](https://jitpack.io/#GitSmark/McAdapter)
 A very simple multilayer package CommonAdapter.      [[中文文档]](https://github.com/GitSmark/McAdapter/blob/master/README&#32;-&#32;zh_CN.md) 
 
 ------
@@ -18,7 +18,7 @@ Usage
   ```
   2. In app build.gradle
   ```
-  implementation 'com.github.GitSmark:McAdapter:1.2.4'
+  implementation 'com.github.GitSmark:McAdapter:1.3.0'
   ```
 * Get your AdapterItem
  ```java
@@ -52,7 +52,7 @@ Usage
  
   listview.setAdapter(new McAdapter(this, data, McAdapterItem1.class)); //添加监听 
   
-  listview.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class));
+  listview.setAdapter(new McAdapter(list, McAdapterItem3.class, McAdapterItem4.class)); //多布局
   
   listview.setAdapter(new CommonAdapter(data) {
       @NonNull
